@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,7 +18,7 @@ import fr.neamar.cinetime.fragments.DetailsEmptyFragment;
 import fr.neamar.cinetime.fragments.DetailsFragment;
 import fr.neamar.cinetime.fragments.MoviesFragment;
 
-public class MoviesActivity extends FragmentActivity implements MoviesFragment.Callbacks {
+public class MoviesActivity extends CineTimeActivity implements MoviesFragment.Callbacks {
 
 	private boolean mTwoPane;
 	private MoviesFragment moviesFragment;

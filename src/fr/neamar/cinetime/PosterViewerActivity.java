@@ -1,7 +1,6 @@
 package fr.neamar.cinetime;
 
 import android.annotation.SuppressLint;
-import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
@@ -17,7 +16,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 import fr.neamar.cinetime.fragments.DetailsFragment;
 import fr.neamar.cinetime.ui.ImageLoader;
 
-public class PosterViewerActivity extends Activity {
+public class PosterViewerActivity extends CineTimeActivity {
 
 	private ImageView poster;
 	public ImageLoader imageLoader;
@@ -25,7 +24,7 @@ public class PosterViewerActivity extends Activity {
 
 	@SuppressLint("NewApi")
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		requestWindowFeature(Window.FEATURE_NO_TITLE);
 		getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

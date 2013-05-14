@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,38 +16,38 @@ import com.google.analytics.tracking.android.EasyTracker;
 import fr.neamar.cinetime.fragments.DetailsFragment;
 import fr.neamar.cinetime.fragments.MoviesFragment;
 
-public class DetailsActivity extends FragmentActivity implements
+public class DetailsActivity extends CineTimeActivity implements
 		MoviesFragment.Callbacks {
 
 	DetailsFragment detailsFragment;
     private MenuItem trailerItem;
 
-	@SuppressLint("NewApi")
-	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.activity_details);
-		// Title in action bar brings back one level
-		if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-			getActionBar().setHomeButtonEnabled(true);
-			getActionBar().setDisplayHomeAsUpEnabled(true);
-		}
-		if (savedInstanceState == null) {
-			Bundle arguments = new Bundle();
-			// FileCodeMirrorFragment fragment = new FileCodeMirrorFragment();
-			DetailsFragment fragment = new DetailsFragment();
-			arguments.putInt(DetailsFragment.ARG_ITEM_ID, getIntent()
-					.getIntExtra(DetailsFragment.ARG_ITEM_ID, -1));
-			arguments.putString(DetailsFragment.ARG_THEATER_NAME, getIntent()
-					.getStringExtra(DetailsFragment.ARG_THEATER_NAME));
-			fragment.setArguments(arguments);
-			getSupportFragmentManager().beginTransaction()
-					.add(R.id.file_detail_container, fragment).commit();
-		}
-	}
+    @SuppressLint("NewApi")
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_INDETERMINATE_PROGRESS);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_details);
+        // Title in action bar brings back one level
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+            getActionBar().setHomeButtonEnabled(true);
+            getActionBar().setDisplayHomeAsUpEnabled(true);
+        }
+        if (savedInstanceState == null) {
+            Bundle arguments = new Bundle();
+            // FileCodeMirrorFragment fragment = new FileCodeMirrorFragment();
+            DetailsFragment fragment = new DetailsFragment();
+            arguments.putInt(DetailsFragment.ARG_ITEM_ID, getIntent()
+                    .getIntExtra(DetailsFragment.ARG_ITEM_ID, -1));
+            arguments.putString(DetailsFragment.ARG_THEATER_NAME, getIntent()
+                    .getStringExtra(DetailsFragment.ARG_THEATER_NAME));
+            fragment.setArguments(arguments);
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.file_detail_container, fragment).commit();
+        }
+    }
 
-	@Override
+    @Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		MenuInflater inflater = getMenuInflater();
 		inflater.inflate(R.menu.activity_details, menu);

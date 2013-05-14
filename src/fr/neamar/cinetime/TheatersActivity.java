@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -15,7 +14,7 @@ import com.google.analytics.tracking.android.EasyTracker;
 
 import fr.neamar.cinetime.fragments.TheatersFragment;
 
-public class TheatersActivity extends FragmentActivity implements TheatersFragment.Callbacks {
+public class TheatersActivity extends CineTimeActivity implements TheatersFragment.Callbacks {
 
 	TheatersFragment theatersFragment;
 	static String title = "";
