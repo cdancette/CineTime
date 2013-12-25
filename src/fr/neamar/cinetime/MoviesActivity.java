@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.NavUtils;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.ContextMenu.ContextMenuInfo;
 import android.view.Menu;
@@ -128,19 +129,32 @@ public class MoviesActivity extends FragmentActivity implements MoviesFragment.C
 		}
 	}
 
-
 	@Override
 	public void onCreateContextMenu(ContextMenu menu, View v, ContextMenuInfo menuInfo) {
 		super.onCreateContextMenu(menu, v, menuInfo);
 		if (v.getId() == android.R.id.list) {
 			MenuInflater inflater = getMenuInflater();
 			inflater.inflate(R.menu.activity_context_movies, menu);
-			//menu.findItem(R.id.menu_search_geo).setVisible(hasLocationSupport());
+			// menu.findItem(R.id.menu_search_geo).setVisible(hasLocationSupport());
 			TextView title = (TextView) v.findViewById(R.id.listitem_movie_title);
 			menu.setHeaderTitle(title.getText());
 		}
 	}
-	
+
+	@Override
+	public boolean onContextItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_hide:
+			// Hide the movie
+			Log.e("WTF", Integer.toString(item.getItemId()));
+			return true;
+		case R.id.menu_show:
+			return true;
+		default:
+			return super.onContextItemSelected(item);
+		}
+	}
+
 	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
 	@Override
 	public void setFragment(Fragment fragment) {
