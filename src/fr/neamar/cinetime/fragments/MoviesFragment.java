@@ -120,6 +120,9 @@ public class MoviesFragment extends ListFragment implements TaskMoviesCallbacks 
 			mTask = new LoadMoviesTask(this, theaterCode);
 			mTask.execute(theaterCode);
 		}
+		
+		// Allow context menu on movies
+		registerForContextMenu(getListView());
 
 		super.onActivityCreated(savedInstanceState);
 	}
